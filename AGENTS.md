@@ -164,6 +164,7 @@ Teaching-Materials ←→ Teaching-Dashboard（网站自动拉取展示）
 - `[2026-04-03] [Dashboard] fetchFile 中 base64 解码改为 TextDecoder('utf-8')。影响：新增红线 R5。`
 - `[2026-04-03] [Dashboard] Nginx 添加 Authorization header 支持私有仓库访问。影响：新增红线 N4。`
 - `[2026-04-03] [Dashboard] 学生卡片年级/班型从 Student-Profiles 动态读取，不再硬编码。`
+- `[2026-04-03] [Materials] 材料格式重构：从多文件（原卷+解析+教案+要点）改为每科1份学生版+1份教师版。教师版包含学生版全文+答案+教学指令。影响：Teaching-Materials AGENTS.md + 备课规范.md 全部更新。`
 - `[2026-04-03] [Student-Profiles] 更新黄涵松档案，补充古诗文默写薄弱点、学校反馈、教学策略。`
 
 ---
