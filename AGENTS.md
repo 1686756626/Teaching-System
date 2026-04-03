@@ -70,6 +70,13 @@ Teaching-Materials ←→ Teaching-Dashboard（网站自动拉取展示）
 | L1 | 所有第三方库必须放在本地 `lib/` 目录 | 国内 CDN 不稳定，改回 CDN 会导致样式/功能丢失 |
 | L2 | 不得删除或重命名 `lib/` 目录下的任何文件 | 页面功能异常 |
 
+### GitHub API 操作红线
+
+| # | 红线 | 违反后果 |
+|---|------|----------|
+| A1 | **不得用 Contents API（`PUT /repos/:owner/:repo/contents/:path`）推送含中文内容的文件** | API 的 base64 编码对中文处理不稳定，文件可能变为 0 字节（2026-04-03 实际发生：Teaching-System/AGENTS.md 被 ee02867 写入 0 字节） |
+| A2 | 推送文件**必须**用 `git clone + 本地编辑 + git commit + git push` | 确保文件内容完整，尤其是中文文件名和中文内容 |
+
 ---
 
 ## 三、备课流程（严格按顺序执行）
@@ -164,7 +171,7 @@ Teaching-Materials ←→ Teaching-Dashboard（网站自动拉取展示）
 
 ### 格式：`[日期] [改动仓库] 改动摘要 + 影响范围`
 
-- `[2026-04-04] [System] 修复 AGENTS.md 空文件事故（ee02867 写入0字节），恢复内容并更新步骤4为2文件体系（学生版+教师版）。影响：全系统。`
+- `[2026-04-04] [System] 新增红线 A1、A2：禁止用 Contents API 推送含中文文件，必须用 git clone + commit + push（教训：ee02867 通过 API 推送导致 AGENTS.md 变为 0 字节）。`
 - `[2026-04-04] [Materials] 重写杨紫泠语文备课材料（学生版+教师版），作为新规范标杆。commit: 4f3e696。`
 - `[2026-04-04] [Materials] 重写备课规范.md + AGENTS.md，统一为2文件体系。commit: 8f7322c。`
 - `[2026-04-04] [Materials] README.md 补充杨紫泠目录结构。commit: a3b347d。`
