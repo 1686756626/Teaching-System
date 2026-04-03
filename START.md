@@ -175,6 +175,10 @@ Teaching-Materials (材料存放) ←→ Teaching-Dashboard (网页展示)
 | 网站技术细节和部署 | Teaching-Dashboard → `AGENTS.md` |
 | 学生信息 | Student-Profiles → `students.json` + `profiles/` |
 
+### ⚠️ 如果要修改网站代码
+
+**必须先读 Teaching-Dashboard → `CHANGELOG.md`**，里面有踩坑记录和不可改动清单，不看直接改会出 bug。
+
 ---
 
 > **建议：收藏本文件。无论接到什么任务，先回来这里确认应该读哪个仓库的哪份文档。**
