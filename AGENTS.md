@@ -12,7 +12,7 @@
 | 仓库 | 可见性 | 分支 | 职责 | AGENTS.md | 何时读取 |
 |------|--------|------|------|-----------|----------|
 | **Teaching-System** | 公开 | main | 📜 总规则书（本文件） | 本文件 | **每次任务第一件事** |
-| **Teaching-Dashboard** | 公开 | main | 🌐 前端可视化网站 | ✅ | 需要查看/修改网站时 |
+| **Teaching-Dashboard** | 私有 | main | 🌐 前端可视化网站 | ✅ | 需要查看/修改网站时 |
 | **Teaching-Calendar** | 公开 | main | 📅 教学进度日历 | ✅ | 需要知道"这周教什么" |
 | **Teaching-Materials** | 公开 | master | 📝 备课资料（输出） | ✅ | 按规范生成材料时写入 |
 | **Student-Profiles** | 私有 | main | 👨‍🎓 学生档案 | ✅ | 需要知道"这个学生什么情况" |
