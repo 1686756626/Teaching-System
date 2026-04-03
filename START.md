@@ -9,7 +9,7 @@
 
 一位南昌的一对一初中教培老师，需要一个 **AI 备课助手 + 可视化网站**。
 
-- AI 负责根据教学进度，自动生成每周的备课材料（试卷、解析、教案、要点）
+- AI 负责根据教学进度，自动生成每周的备课材料（学生版学案、教师版操作手册）
 - 网站负责把生成的材料展示出来，方便查看和下载
 
 **网站地址：** http://131.143.251.21/
@@ -27,7 +27,7 @@
 | 分支 | `main` |
 | 可见性 | 公开 |
 | 核心文件 | `AGENTS.md` — **系统的总规则书** |
-| 里面有什么 | 备课流程 6 步、文件命名规则、原卷/解析/教案/要点各自的格式要求、目录结构硬性约束 |
+| 里面有什么 | 备课流程 6 步、文件命名规则、学生版/教师版的格式要求、目录结构硬性约束 |
 | 什么时候读 | **每次任务的第一件事** |
 
 ### 第 2 步：了解学生 → Student-Profiles
@@ -47,7 +47,7 @@
 |------|------|
 | 分支 | `main` |
 | 可见性 | 公开 |
-| 核心文件 | `schedule.json`（结构化数据）、`src/` 下的 36 个详细 `.md` 文件 |
+| 核心文件 | `src/` 下的 36 个详细 `.md` 文件（**唯一数据源**） |
 | 里面有什么 | 南昌市七年级到高三、语文/历史/道法/政治、上下学期的完整教学进度 |
 | 详细文档 | 仓库内 `AGENTS.md` |
 | 什么时候读 | 备课前，知道"这周学校教到哪了" |
@@ -98,7 +98,7 @@ Teaching-Materials (材料存放) ←→ Teaching-Dashboard (网页展示)
 ```
 1. 读 Teaching-System/AGENTS.md（复习规则）
 2. 读 Student-Profiles（了解学生）
-3. 读 Teaching-Calendar/schedule.json（查进度）
+3. 读 Teaching-Calendar/src/*.md（查进度）
 4. 读 Teaching-Materials/备课规范.md（复习格式）
 5. 生成材料 → 写入 Teaching-Materials
 6. 更新 Teaching-Materials/README.md
@@ -117,7 +117,7 @@ Teaching-Materials (材料存放) ←→ Teaching-Dashboard (网页展示)
 ### 场景 C：更新教学日历数据
 
 ```
-1. 修改 Teaching-Calendar/schedule.json 或 src/ 下的 .md 文件
+1. 修改 Teaching-Calendar/src/ 下的 .md 文件
 2. 提交到 GitHub
 3. 网站自动拉取（15 分钟缓存或手动刷新）
 ```
@@ -129,10 +129,10 @@ Teaching-Materials (材料存放) ←→ Teaching-Dashboard (网页展示)
 ### 目录结构（Materials 仓库，固定 4 层）
 
 ```
-✅ 黄涵松/学生/08/01-语文-语法小测（原卷）.md
+✅ 黄涵松/学生/08/01-语文-期中备考冲刺（学生版）.md
 ❌ 学生/黄涵松/08/...          ← 学生名必须在第1层
 ❌ 黄涵松/学生/第8周/...        ← 周次只写数字 08
-❌ 黄涵松/学生/08/原卷/...      ← 不能加第4层文件夹
+❌ 黄涵松/学生/08/学生版/...      ← 不能加第4层文件夹
 ```
 
 ### 文件命名
@@ -142,7 +142,7 @@ Teaching-Materials (材料存放) ←→ Teaching-Dashboard (网页展示)
 
 编号：01、02、03...（两位数）
 科目：语文、道法、历史（用简称，不写"道德与法治"）
-类型：（原卷）/（解析）/（教案）/ 无后缀=要点
+类型：（学生版）/（教师版）
 ```
 
 ### 科目名称对照
@@ -150,7 +150,7 @@ Teaching-Materials (材料存放) ←→ Teaching-Dashboard (网页展示)
 | 语境 | 用什么 |
 |------|--------|
 | Materials 文件名 | `道法` |
-| Calendar schedule.json key | `道德与法治`（初中）/ `思想政治`（高中） |
+| Calendar src/*.md key | `道德与法治`（初中）/ `思想政治`（高中） |
 | 学生对话 / 课表 | `道法` |
 
 ### 服务器
@@ -169,7 +169,7 @@ Teaching-Materials (材料存放) ←→ Teaching-Dashboard (网页展示)
 | 想了解... | 去哪里读 |
 |-----------|----------|
 | 备课流程和规则 | Teaching-System → `AGENTS.md` |
-| 原卷/解析/教案怎么写 | Teaching-Materials → `备课规范.md` |
+| 学生版/教师版怎么写 | Teaching-Materials → `备课规范.md` |
 | 材料目录结构规范 | Teaching-Materials → `AGENTS.md` |
 | 日历数据结构 | Teaching-Calendar → `AGENTS.md` |
 | 网站技术细节和部署 | Teaching-Dashboard → `AGENTS.md` |
