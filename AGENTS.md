@@ -5,16 +5,20 @@
 
 ---
 
-## 一、四仓库体系
+## 一、仓库体系
 
 所有仓库属于 GitHub 用户 `1686756626`：
 
-| 仓库 | 可见性 | 职责 | 何时读取 |
-|------|--------|------|----------|
-| **Teaching-System** | 公开 | 本文件 · 操作规则 | 每次任务开始时 |
-| **Teaching-Calendar** | 公开 | 教学进度日历 | 需要知道"这周教什么" |
-| **Student-Profiles** | 私有 | 学生档案 | 需要知道"这个学生什么情况" |
-| **Teaching-Materials** | 公开 | 备课资料（输出） | 按规范生成材料时写入 |
+| 仓库 | 可见性 | 分支 | 职责 | 何时读取 |
+|------|--------|------|------|----------|
+| **Teaching-System** | 公开 | main | 本文件 · 操作规则 | 每次任务开始时 |
+| **Teaching-Dashboard** | 私有 | main | 前端可视化网站 | 需要查看/修改网站时 |
+| **Teaching-Calendar** | 公开 | main | 教学进度日历 | 需要知道"这周教什么" |
+| **Teaching-Materials** | 公开 | master | 备课资料（输出） | 按规范生成材料时写入 |
+| **Student-Profiles** | 私有 | main | 学生档案 | 需要知道"这个学生什么情况" |
+
+> 前端网站部署在 `http://131.143.251.21/`，自动从 Teaching-Materials 和 Teaching-Calendar 拉取数据。
+> 详细交接文档见 Teaching-Dashboard 仓库的 AGENTS.md。
 
 ---
 
