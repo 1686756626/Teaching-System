@@ -179,6 +179,28 @@ Teaching-Materials (材料存放) ←→ Teaching-Dashboard (网页展示)
 
 **必须先读 Teaching-Dashboard → `CHANGELOG.md`**，里面有踩坑记录和不可改动清单，不看直接改会出 bug。
 
+### 🚨 红线规则（绝对不可违反）
+
+| 禁止事项 | 原因 |
+|----------|------|
+| 不要改 `parseMaterialsTree()` 中 `parts.length === 4` | 改了学生数据全丢 |
+| 不要改 `CONFIG.materials.branch`（必须是 `master`） | 其他仓库都是 main，只有它是 master |
+| 不要在 nginx 配置中加 `gzip on` | 会截断 JS 文件，网站白屏 |
+| 不要把 `<script src>` 改回 CDN 地址 | 国内用户加载不了 |
+| 不要删除或重命名 `lib/` 目录下的任何文件 | 页面样式和功能全部依赖它们 |
+| 不要修改 nginx 的 `/gh-api/` 和 `/gh-raw/` 代理配置 | 改了数据拉取就断了 |
+
+### 🔄 出问题了？一键回滚
+
+无论 agent 改出了什么问题，在服务器上执行一条命令即可恢复：
+
+```bash
+bash /var/www/teaching/rollback.sh
+```
+
+回滚会恢复：静态文件 + Nginx 配置，并自动验证网站是否正常。
+回滚源：Git tag `v1.0-stable`（Teaching-Dashboard 仓库）+ 服务器 .bak 备份。
+
 ---
 
 > **建议：收藏本文件。无论接到什么任务，先回来这里确认应该读哪个仓库的哪份文档。**
