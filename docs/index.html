@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教学管理系统</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <!-- 侧边栏 -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h2>教学管理</h2>
+      <span id="week-badge"></span>
+    </div>
+    <ul class="nav-menu">
+      <li class="active" data-page="schedule">
+        <span class="nav-icon">&#128197;</span> 周课表
+      </li>
+      <li data-page="students">
+        <span class="nav-icon">&#128100;</span> 学生档案
+      </li>
+      <li data-page="materials">
+        <span class="nav-icon">&#128209;</span> 备课资料
+      </li>
+      <li data-page="calendar">
+        <span class="nav-icon">&#128200;</span> 教学进度
+      </li>
+      <li data-page="settings">
+        <span class="nav-icon">&#9881;</span> 设置
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <span id="connection-status" class="status-dot offline"></span>
+      <span id="connection-text">未连接</span>
+    </div>
+  </nav>
+
+  <!-- 移动端顶栏 -->
+  <header id="mobile-header">
+    <button id="menu-toggle">&#9776;</button>
+    <h2>教学管理</h2>
+  </header>
+
+  <!-- 主内容区 -->
+  <main id="content">
+    <!-- 加载提示 -->
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>正在加载数据...</p>
+    </div>
+
+    <!-- 课表页 -->
+    <section id="page-schedule" class="page" style="display:none">
+      <div class="page-header">
+        <h1>本周课表</h1>
+        <div class="header-actions">
+          <button id="prev-week" class="btn-sm">&lt;</button>
+          <span id="current-week-label"></span>
+          <button id="next-week" class="btn-sm">&gt;</button>
+        </div>
+      </div>
+      <div id="schedule-grid" class="schedule-grid"></div>
+    </section>
+
+    <!-- 学生档案页 -->
+    <section id="page-students" class="page" style="display:none">
+      <div class="page-header">
+        <h1>学生档案</h1>
+        <div class="header-actions">
+          <select id="grade-filter" class="filter-select">
+            <option value="all">全部年级</option>
+            <option value="八年级">初二</option>
+            <option value="九年级">初三</option>
+            <option value="高一">高一</option>
+          </select>
+        </div>
+      </div>
+      <div id="student-cards" class="student-cards"></div>
+      <div id="student-detail" class="modal" style="display:none">
+        <div class="modal-content">
+          <button class="modal-close">&times;</button>
+          <div id="student-detail-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 备课资料页 -->
+    <section id="page-materials" class="page" style="display:none">
+      <div class="page-header">
+        <h1>备课资料</h1>
+      </div>
+      <div class="materials-layout">
+        <div id="materials-sidebar" class="materials-sidebar">
+          <h3>选择学生</h3>
+          <ul id="materials-student-list"></ul>
+        </div>
+        <div id="materials-content" class="materials-content">
+          <div class="empty-state">
+            <p>&#128209;</p>
+            <p>请从左侧选择学生查看备课资料</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 教学进度页 -->
+    <section id="page-calendar" class="page" style="display:none">
+      <div class="page-header">
+        <h1>教学进度</h1>
+        <div class="header-actions">
+          <select id="cal-grade" class="filter-select">
+            <option value="">选择年级</option>
+            <option value="初中/八年级">初二</option>
+            <option value="初中/九年级">初三</option>
+            <option value="高中/高一">高一</option>
+          </select>
+          <select id="cal-subject" class="filter-select">
+            <option value="">选择科目</option>
+          </select>
+        </div>
+      </div>
+      <div id="calendar-content" class="calendar-content">
+        <div class="empty-state">
+          <p>&#128200;</p>
+          <p>请选择年级和科目查看教学进度</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 设置页 -->
+    <section id="page-settings" class="page" style="display:none">
+      <div class="page-header">
+        <h1>设置</h1>
+      </div>
+      <div class="settings-card">
+        <h3>GitHub Token</h3>
+        <p class="settings-desc">用于访问私有仓库（Student-Profiles），请使用只读权限的 Token</p>
+        <div class="input-group">
+          <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx" class="input-field">
+          <button id="save-token" class="btn-primary">保存</button>
+        </div>
+        <p id="token-status" class="settings-status"></p>
+      </div>
+      <div class="settings-card">
+        <h3>仓库信息</h3>
+        <table class="info-table">
+          <tr><td>系统规则</td><td>Teaching-System (公开)</td></tr>
+          <tr><td>教学日历</td><td>Teaching-Calendar (公开)</td></tr>
+          <tr><td>备课资料</td><td>Teaching-Materials (公开)</td></tr>
+          <tr><td>学生档案</td><td>Student-Profiles (私有)</td></tr>
+        </table>
+      </div>
+      <div class="settings-card">
+        <h3>数据刷新</h3>
+        <button id="refresh-data" class="btn-primary">重新加载所有数据</button>
+        <p class="settings-desc">数据会在每次打开页面时自动加载，如需手动刷新请点击上方按钮</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 遮罩层 -->
+  <div id="overlay" style="display:none"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
