@@ -187,6 +187,8 @@ Teaching-Materials ←→ Teaching-Dashboard（网站自动拉取展示）
 - `[2026-04-04] [Materials] 完善备课规范.md时间分配原则，区分单科/多科/一对多场景。commit: d320725。`
 - `[2026-04-04] [Student-Profiles] 重写 AGENTS.md，对齐实际 students.json 结构，补充查询示例和红线。commit: 8b9e9d6。`
 - `[2026-04-04] [System] 新智能体接手验证通过，修复4项问题后文档完备性达到可接手标准。`
+- `[2026-04-04] [Materials] 按新规范重写黄涵松3份教师版（语文/道法/历史），贯彻先练后讲原则：去除独立知识讲解环节，方法融入练习讲评，新增当场练习+练习讲评环节。commit: 53bcc96。`
+- `[2026-04-04] [Materials] 修复黄涵松/龙其乐6份学生版base64编码问题（Contents API推送导致）。commit: 53bcc96。`
 
 ---
 
