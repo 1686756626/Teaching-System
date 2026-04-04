@@ -183,6 +183,10 @@ Teaching-Materials ←→ Teaching-Dashboard（网站自动拉取展示）
 - `[2026-04-03] [Dashboard] 学生卡片年级/班型从 Student-Profiles 动态读取，不再硬编码。`
 - `[2026-04-03] [Materials] 材料格式重构：从多文件（原卷+解析+教案+要点）改为每科1份学生版+1份教师版。影响：Teaching-Materials AGENTS.md + 备课规范.md 全部更新。`
 - `[2026-04-03] [Student-Profiles] 更新黄涵松档案，补充古诗文默写薄弱点、学校反馈、教学策略。`
+- `[2026-04-04] [Materials] 修复黄涵松/龙其乐6份教师版日期年份 2025→2026。commit: d4adea6。`
+- `[2026-04-04] [Materials] 完善备课规范.md时间分配原则，区分单科/多科/一对多场景。commit: d320725。`
+- `[2026-04-04] [Student-Profiles] 重写 AGENTS.md，对齐实际 students.json 结构，补充查询示例和红线。commit: 8b9e9d6。`
+- `[2026-04-04] [System] 新智能体接手验证通过，修复4项问题后文档完备性达到可接手标准。`
 
 ---
 
