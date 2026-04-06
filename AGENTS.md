@@ -389,3 +389,5 @@ Teaching-Materials ←→ Teaching-Dashboard（网站自动拉取展示）
 | Teaching-Calendar | **公开** | `main` | 教学日历 |
 | Teaching-Materials | **公开** | `master` | 备课材料（**唯一用 master 的仓库**） |
 | Student-Profiles | **私有** | `main` | 学生档案（私有因为含个人信息） |
+
+- `[2026-04-06] [Dashboard] Hero区3列指标分色块（teal/violet/amber渐变+边框+数字同色）+hover上浮阴影；作业格子科目色块胶囊按钮（语文琥珀/道法蓝/历史绿）+去"-语文"前缀dash。缓存版本 v=20260406o。`
