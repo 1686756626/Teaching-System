@@ -58,10 +58,17 @@ Teaching-Materials ←→ Teaching-Dashboard（网站自动拉取展示）
 
 | # | 红线 | 所在仓库 | 违反后果 |
 |---|------|----------|----------|
-| F1 | Materials 目录必须严格 4 层：`学生名/角色/周次/文件名` | Teaching-Materials | 网站解析失效 |
+| F1 | Materials 目录必须严格 4 层：`学生名/角色/周次/文件名`（旧）或 `年级/作业/周次/文件名`（新作业） | Teaching-Materials | 网站解析失效 |
 | F2 | 周次必须两位纯数字：`08`（不是 `第8周`） | Teaching-Materials | 网站解析失效 |
 | F3 | 角色层只能是 `学生` 或 `教师` | Teaching-Materials | 网站解析失效 |
 | F4 | 不可在周次和文件名之间增加子文件夹 | Teaching-Materials | 网站解析失效 |
+| F5 | `parseMaterialsTree()` 依赖 `parts.length === 4` 判断，不可改动目录层级 | Teaching-Materials | 作业/学生文件全部无法解析 |
+
+### 作业出题人标注规范
+
+- 作业文件（`年级/作业/周次/周X-科目.md`）头部可加元数据：`> ✍️ 出题人：姓名（AI辅助）`
+- Dashboard 通过 `extractAuthor()` 异步解析，仅在作业文件展示，周末讲义不展示
+- 无标注默认为教师出题
 
 ### 库依赖红线
 
@@ -169,6 +176,8 @@ Teaching-Materials ←→ Teaching-Dashboard（网站自动拉取展示）
 
 > **每次修改系统后，必须在下方追加一条记录。** 这是跨仓库协作的唯一同步机制。
 
+- `[2026-04-06] [Dashboard+Materials] 新增"出题人标注"功能：作业文件头部加元数据 `> ✍️ 出题人：姓名（AI辅助）`，Dashboard 异步解析并展示标签。影响：utils.js（+extractAuthor）、app.js（+_loadAuthorBadges）、备课规范.md（+出题人标注章节）、红线 F1 补充新作业目录、红线 F5 新增。`
+- `[2026-04-06] [Materials] 上传高一语文W08四天作业（周一~周四），出题人：黄义朗（AI辅助）。高一目录首次创建。`
 - `[2026-04-06] [System] 新增第七章"周规划流程"和第八章"课后更新规则"。教训：AI急看干活不先出方案，学生档案大面积空白没有持续维护机制。`
 - `[2026-04-06] [System] 同步更新 MEMORY.md：一模考生9人（不是3人），高一4人是老学生（不是新学生），每周作息调整。`
 
