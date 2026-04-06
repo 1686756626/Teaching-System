@@ -182,6 +182,7 @@ Teaching-Materials ←→ Teaching-Dashboard（网站自动拉取展示）
 - `[2026-04-06] [System] 同步更新 MEMORY.md：一模考生9人（不是3人），高一4人是老学生（不是新学生），每周作息调整。`
 - `[2026-04-06] [Dashboard] 修复 .find() → .filter() bug：同一天多科目作业（如周一-历史+周一-道法）只显示第一个。改为 .filter() + 遍历渲染，Dashboard 看板和作业管理页均已修复。影响：app.js L1023 + L1448。`
 - `[2026-04-06] [Materials] 张翰中+曾梓瑞 W08 周二语文：一模冲刺保底拿分（学生版+教师版）。一对二通用应试内容，聚焦基础保底+阅读方法+作文应急框架。`
+- `[2026-04-06] [Dashboard] UI 优化：蓝色→teal配色、导航栏毛玻璃效果+渐变logo、CSS变量体系、进度条渐变填充、卡片微交互hover阴影、动画曲线优化、搜索框圆角teal主题。缓存版本 v=20260406j。`
 
 - `[2026-04-04] [System] 新增红线 A1、A2：禁止用 Contents API 推送含中文文件，必须用 git clone + commit + push（教训：ee02867 通过 API 推送导致 AGENTS.md 变为 0 字节）。`
 - `[2026-04-04] [Materials] 重写杨紫泠语文备课材料（学生版+教师版），作为新规范标杆。commit: 4f3e696。`
