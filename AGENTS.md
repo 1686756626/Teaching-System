@@ -347,6 +347,7 @@ Teaching-Materials（材料存放）←→ Teaching-Dashboard（网页展示）
 
 > 每次修改后在这里追加。
 
+- `[2026-04-07] [Dashboard] 修复周次排序 bug：parseMaterialsTree 中 parseInt('W08')=NaN 导致 sort 无效，改为先 strip W 前缀再比较。新增 74 条自动化测试（test-utils.html）。缓存版本 v=20260407f。`
 - `[2026-04-07] [System] 文档大合并：AGENTS.md + START.md + 教学经验库.md → 统一为本文件。删除冗余，消除三文件重叠。`
 - `[2026-04-07] [System] 新增教学经验库：踩坑记录（S1-S5/C1-C5）、验证有效的教学模式、学生薄弱点索引、备课模板速查、每周 Lint 清单。`
 - `[2026-04-07] [Materials] 龙其乐+黄涵松 W09↔W10 对调（作文冲刺应在W10，常规科目在W09）。`
