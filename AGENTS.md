@@ -92,10 +92,7 @@ Teaching-Materials（材料存放）←→ Teaching-Dashboard（网页展示）
 
 | # | 红线 | 后果 |
 |---|------|------|
-| N1 | 新仓库**必须**创建 `knowledge-map.json` | 知识库联动断裂，经验无法追溯 |
-| N2 | 新仓库**必须**创建 `AGENTS.md`，且包含"通用经验知识库联动"章节 | 新智能体无法接手 |
-| N3 | 新仓库**必须**在 `AGENTS.md` 中引用 `Web-Project-Template` 的 `贡献规范.md` | 缺少贡献规则 |
-| N4 | 新仓库创建后**必须**同步更新 `Web-Project-Template/knowledge-map.json` 的 `projects` 索引 | 全局索引缺失该项目 |
+| N1 | 新仓库**必须**有 `AGENTS.md` | 新 agent 无法接手 |
 
 ### 库依赖红线
 
@@ -304,29 +301,7 @@ Teaching-Materials（材料存放）←→ Teaching-Dashboard（网页展示）
 
 ---
 
-## 七、新仓库创建流程
-
-> **任何新仓库创建时必须执行以下步骤，缺一不可。**
-
-```
-1. GitHub 创建仓库
-2. clone 到本地
-3. 写 AGENTS.md（含项目定位、技术栈、红线、联动章节）
-4. 创建 knowledge-map.json：
-   {
-     "_知识库": "https://github.com/1686756626/Web-Project-Template",
-     "_贡献规范": "Web-Project-Template/贡献规范.md",
-     "contributes": [],
-     "uses": [],
-     "pending": []
-   }
-5. 从 Web-Project-Template 复制需要的 components/ 或模板代码
-   → 在 knowledge-map.json 的 uses 数组中记录
-6. 更新 Web-Project-Template/knowledge-map.json 的 projects 索引
-7. 两边分别 commit + push
-```
-
-## 八、文档同步规则
+## 七、文档同步规则
 
 | 改了什么 | 必须更新 |
 |---------|---------|
@@ -339,7 +314,7 @@ Teaching-Materials（材料存放）←→ Teaching-Dashboard（网页展示）
 
 ---
 
-## 九、工作流原则
+## 八、工作流原则
 
 > **核心：上周反馈 → 本周材料，本周反馈 → 下周材料。**
 
@@ -365,7 +340,7 @@ Teaching-Materials（材料存放）←→ Teaching-Dashboard（网页展示）
 
 ---
 
-## 十、课后更新规则（强制性）
+## 九、课后更新规则（强制性）
 
 每次上完课必须更新学生档案：
 
@@ -380,7 +355,7 @@ Teaching-Materials（材料存放）←→ Teaching-Dashboard（网页展示）
 
 ---
 
-## 十一、变更日志
+## 十、变更日志
 
 > 每次修改后在这里追加。
 
